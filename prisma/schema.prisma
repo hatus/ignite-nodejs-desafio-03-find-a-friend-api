@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Age {
+  FILHOTE
+  ADULTO
+}
+
+enum Size {
+  PEQUENO
+  MEDIO
+  GRANDE
+}
+
+enum Stamina {
+  BAIXO
+  MEDIO
+  ALTO
+}
+
+model Pet {
+  id         String   @id @default(uuid())
+  name       String
+  about      String
+  age        Age
+  size       Size
+  stamina    Stamina
+  created_at DateTime @default(now())
+
+  @@map("pets")
+}
