@@ -27,14 +27,70 @@ enum Stamina {
   ALTO
 }
 
+enum Independency {
+  BAIXO
+  MEDIO
+  ALTO
+}
+
+enum Environment {
+  BAIXO
+  MEDIO
+  ALTO
+}
+
 model Pet {
-  id         String   @id @default(uuid())
-  name       String
-  about      String
-  age        Age
-  size       Size
-  stamina    Stamina
-  created_at DateTime @default(now())
+  id           String       @id @default(uuid())
+  name         String
+  about        String
+  age          Age
+  size         Size
+  stamina      Stamina
+  independency Independency
+  environment  Environment
+  created_at   DateTime     @default(now())
+
+  photos          PetPhoto[]
+  requirements    Requirement[]
+  organization    Organization  @relation(fields: [organization_id], references: [id])
+  organization_id String
 
   @@map("pets")
+}
+
+model PetPhoto {
+  id         String   @id @default(uuid())
+  url        String
+  created_at DateTime @default(now())
+
+  pet    Pet    @relation(fields: [pet_id], references: [id])
+  pet_id String
+
+  @@map("pet_photos")
+}
+
+model Requirement {
+  id          String   @id @default(uuid())
+  description String
+  created_at  DateTime @default(now())
+
+  pet    Pet    @relation(fields: [pet_id], references: [id])
+  pet_id String
+
+  @@map("requirements")
+}
+
+model Organization {
+  id            String @id @default(uuid())
+  sponsor_name  String
+  email         String @unique
+  cep           String
+  address       String
+  city          String
+  whatsapp      String
+  password_hash String
+
+  pets Pet[]
+
+  created_at DateTime @default(now())
 }
