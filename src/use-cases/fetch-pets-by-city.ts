@@ -1,5 +1,5 @@
-import { OrganizationsRepository } from '@/modules/organizations/repositories/organizations-repository'
-import { PetsRepository } from '../repositories/pets-repository'
+import { OrganizationsRepository } from '@/repositories/organizations-repository'
+import { PetsRepository } from '../../../repositories/pets-repository'
 import { Pet } from '@prisma/client'
 import { ResourceNotFoundError } from '@/shared/errors/resource-not-found-error'
 

@@ -1,5 +1,5 @@
 import { Pet } from '@prisma/client'
-import { PetsRepository } from '../repositories/pets-repository'
+import { PetsRepository } from '../../../repositories/pets-repository'
 import { ResourceNotFoundError } from '@/shared/errors/resource-not-found-error'
 
 interface GetPetProfileUseCaseRequest {

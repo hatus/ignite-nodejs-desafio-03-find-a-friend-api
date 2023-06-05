@@ -3,8 +3,8 @@ import { it, describe, beforeEach, expect } from 'vitest'
 import { PetsRepository } from '../repositories/pets-repository'
 import { CreatePetUseCase } from './create-pet'
 import { InMemoryPetsRepository } from '../repositories/in-memory/in-memory-pets-repository'
-import { OrganizationsRepository } from '@/modules/organizations/repositories/organizations-repository'
-import { InMemoryOrganizationsRepository } from '@/modules/organizations/repositories/in-memory/in-memory-organizations-repository'
+import { OrganizationsRepository } from '@/repositories/organizations-repository'
+import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
 
 let organizationsRepository: OrganizationsRepository
 let petsRepository: PetsRepository

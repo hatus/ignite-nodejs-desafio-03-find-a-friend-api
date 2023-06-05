@@ -93,4 +93,6 @@ model Organization {
   pets Pet[]
 
   created_at DateTime @default(now())
+
+  @@map("organizations")
 }

@@ -1,12 +1,12 @@
 import { it, describe, beforeEach, expect } from 'vitest'
 
-import { PetsRepository } from '../repositories/pets-repository'
-import { InMemoryPetsRepository } from '../repositories/in-memory/in-memory-pets-repository'
 import { FetchPetsByCityUseCase } from './fetch-pets-by-city'
-import { OrganizationsRepository } from '@/modules/organizations/repositories/organizations-repository'
-import { InMemoryOrganizationsRepository } from '@/modules/organizations/repositories/in-memory/in-memory-organizations-repository'
+import { OrganizationsRepository } from '@/repositories/organizations-repository'
+import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
 import { hash } from 'bcryptjs'
 import { ResourceNotFoundError } from '@/shared/errors/resource-not-found-error'
+import { PetsRepository } from '@/repositories/pets-repository'
+import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 
 let petsRepository: PetsRepository
 let organizationsRepository: OrganizationsRepository
