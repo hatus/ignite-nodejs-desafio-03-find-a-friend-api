@@ -30,4 +30,12 @@ export class InMemoryOrganizationsRepository
 
     return organization
   }
+
+  async fetchManyByCity(city: string) {
+    const organizations = this.items.filter(
+      (organization) => organization.city === city,
+    )
+
+    return organizations
+  }
 }

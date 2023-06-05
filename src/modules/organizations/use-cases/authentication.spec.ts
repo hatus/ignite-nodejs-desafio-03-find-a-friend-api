@@ -23,6 +23,7 @@ describe('Authentication Use Case', () => {
       password_hash: await hash('123123', 6),
       sponsor_name: 'hatus niwman',
       whatsapp: '(86) 9999-2348',
+      city: 'teresina',
     })
 
     const { organization } = await sut.execute({
@@ -40,6 +41,7 @@ describe('Authentication Use Case', () => {
       email: 'hatusn@gmail.com',
       password_hash: await hash('123123', 6),
       sponsor_name: 'hatus niwman',
+      city: 'teresina',
       whatsapp: '(86) 9999-2348',
     })
 
