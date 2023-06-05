@@ -4,9 +4,9 @@ import { FetchPetsByCityUseCase } from './fetch-pets-by-city'
 import { OrganizationsRepository } from '@/repositories/organizations-repository'
 import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
 import { hash } from 'bcryptjs'
-import { ResourceNotFoundError } from '@/shared/errors/resource-not-found-error'
 import { PetsRepository } from '@/repositories/pets-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let petsRepository: PetsRepository
 let organizationsRepository: OrganizationsRepository

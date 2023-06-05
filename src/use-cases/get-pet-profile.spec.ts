@@ -1,9 +1,9 @@
 import { it, describe, beforeEach, expect } from 'vitest'
 
 import { GetPetProfileUseCase } from './get-pet-profile'
-import { ResourceNotFoundError } from '@/shared/errors/resource-not-found-error'
 import { PetsRepository } from '@/repositories/pets-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let petsRepository: PetsRepository
 let sut: GetPetProfileUseCase

@@ -1,4 +1,4 @@
-import { InvalidCredentialsError } from '@/errors/invalid-credentials-error'
+import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
 import { makeAuthUseCase } from '@/use-cases/factories/make-auth-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'

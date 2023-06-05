@@ -2,7 +2,7 @@ import { hash } from 'bcryptjs'
 import { it, describe, beforeEach, expect } from 'vitest'
 
 import { AuthenticationUseCase } from './authentication'
-import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 import { OrganizationsRepository } from '../repositories/organizations-repository'
 import { InMemoryOrganizationsRepository } from '../repositories/in-memory/in-memory-organizations-repository'
 
