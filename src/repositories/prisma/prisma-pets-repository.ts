@@ -15,4 +15,12 @@ export class PrismaPetsRepository implements PetsRepository {
 
     return pet
   }
+
+  async fetchManyByOrganizationIds(organizationIds: string[]) {
+    const pets = await prisma.pet.findMany({
+      where: { organization_id: { in: organizationIds } },
+    })
+
+    return pets
+  }
 }
