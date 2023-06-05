@@ -36,5 +36,5 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     throw error
   }
 
-  return reply.status(200).send()
+  return reply.status(201).send()
 }
