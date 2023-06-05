@@ -17,4 +17,12 @@ export class PrismaOrganizationsRepository implements OrganizationsRepository {
 
     return organization
   }
+
+  async fetchManyByCity(city: string) {
+    const organizations = await prisma.organization.findMany({
+      where: { city },
+    })
+
+    return organizations
+  }
 }
