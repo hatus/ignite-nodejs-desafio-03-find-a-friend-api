@@ -37,6 +37,8 @@ describe('Create Pet Use Case', () => {
       name: 'Totó',
       size: 'GRANDE',
       stamina: 'BAIXO',
+      photos: [{ url: 'uploads/foto1.png' }, { url: 'uploads/foto2.png' }],
+      requirements: [{ description: 'requer atenção dobrada' }],
     })
 
     expect(pet.id).toEqual(expect.any(String))

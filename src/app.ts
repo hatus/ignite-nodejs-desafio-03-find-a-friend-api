@@ -4,13 +4,14 @@ import fastifyJwt from '@fastify/jwt'
 
 import { env } from './env'
 import { organizationsRoutes } from './http/controllers/routes'
+import { multer } from './libs/upload'
 
 const app = fastify()
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
 })
-
+app.register(multer.contentParser)
 app.register(organizationsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
