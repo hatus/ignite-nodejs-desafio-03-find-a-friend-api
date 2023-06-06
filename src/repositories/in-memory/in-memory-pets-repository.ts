@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto'
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
 
-  async create(data: Prisma.PetUncheckedCreateInput): Promise<Pet> {
+  async create(data: Prisma.PetUncheckedCreateInput) {
     const pet: Pet = {
       ...data,
       id: randomUUID(),
@@ -19,11 +19,14 @@ export class InMemoryPetsRepository implements PetsRepository {
 
   async findById(id: string) {
     const pet = this.items.find((item) => item.id === id)
+
     if (!pet) {
       return null
     }
 
-    return pet
+    const novo = { ...pet, photos: [], requirements: [] }
+
+    return novo
   }
 
   async fetchManyByOrganizationIds(organizationIds: string[]) {

@@ -1,6 +1,9 @@
 import { PetPhoto, Prisma } from '@prisma/client'
 
 export interface PetPhotosRepository {
-  createMany(photos: Prisma.PetPhotoCreateManyInput[]): Promise<void>
+  createMany(
+    photos: Prisma.PetPhotoUncheckedCreateWithoutPetInput[],
+    petId: string,
+  ): Promise<void>
   fetchManyByPetId(petId: string): Promise<PetPhoto[]>
 }

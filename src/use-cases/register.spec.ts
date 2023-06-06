@@ -1,10 +1,10 @@
 import { it, describe, beforeEach, expect } from 'vitest'
 
-import { RegisterUseCase } from './register'
 import { OrganizationsRepository } from '../repositories/organizations-repository'
 import { InMemoryOrganizationsRepository } from '../repositories/in-memory/in-memory-organizations-repository'
 import { OrganizationAlreadyExistsError } from './errors/organization-already-exists-error'
 import { compare } from 'bcryptjs'
+import { RegisterUseCase } from './register'
 
 let organizationsRepository: OrganizationsRepository
 let sut: RegisterUseCase

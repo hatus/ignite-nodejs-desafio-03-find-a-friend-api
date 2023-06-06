@@ -21,6 +21,14 @@ export class PrismaOrganizationsRepository implements OrganizationsRepository {
   async fetchManyByCity(city: string) {
     const organizations = await prisma.organization.findMany({
       where: { city },
+      include: {
+        pets: {
+          include: {
+            photos: true,
+            requirements: true,
+          },
+        },
+      },
     })
 
     return organizations

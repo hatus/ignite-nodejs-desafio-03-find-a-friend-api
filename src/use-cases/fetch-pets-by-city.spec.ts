@@ -12,7 +12,7 @@ let petsRepository: PetsRepository
 let organizationsRepository: OrganizationsRepository
 let sut: FetchPetsByCityUseCase
 
-describe('Get Pet Profile Use Case', () => {
+describe('Fetch Pets By City Use Case', () => {
   beforeEach(() => {
     petsRepository = new InMemoryPetsRepository()
     organizationsRepository = new InMemoryOrganizationsRepository()
