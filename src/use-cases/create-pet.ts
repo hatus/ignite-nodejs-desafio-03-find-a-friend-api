@@ -3,14 +3,11 @@ import {
   Environment,
   Independency,
   Pet,
-  Prisma,
   Size,
   Stamina,
 } from '@prisma/client'
 
 import { PetsRepository } from '@/repositories/pets-repository'
-import { PetPhotosRepository } from '@/repositories/pet-photos-repository'
-import { RequirementsRepository } from '@/repositories/requirements-repository'
 
 interface CreatePetUseCaseRequest {
   organizationId: string
@@ -21,8 +18,6 @@ interface CreatePetUseCaseRequest {
   name: string
   size: Size
   stamina: Stamina
-  photos: Prisma.PetPhotoUncheckedCreateWithoutPetInput[]
-  requirements: Prisma.RequirementUncheckedCreateWithoutPetInput[]
 }
 
 interface CreatePetUseCaseResponse {
@@ -30,11 +25,7 @@ interface CreatePetUseCaseResponse {
 }
 
 export class CreatePetUseCase {
-  constructor(
-    private petsRepository: PetsRepository,
-    private petPhotosRepository: PetPhotosRepository,
-    private requirementsRepository: RequirementsRepository,
-  ) {}
+  constructor(private petsRepository: PetsRepository) {}
 
   async execute({
     organizationId,
@@ -45,8 +36,6 @@ export class CreatePetUseCase {
     name,
     size,
     stamina,
-    photos,
-    requirements,
   }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
     const pet = await this.petsRepository.create({
       organization_id: organizationId,
@@ -58,9 +47,6 @@ export class CreatePetUseCase {
       size,
       stamina,
     })
-
-    await this.petPhotosRepository.createMany(photos, pet.id)
-    await this.requirementsRepository.createMany(requirements, pet.id)
 
     return { pet }
   }

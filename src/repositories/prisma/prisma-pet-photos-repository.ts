@@ -8,10 +8,12 @@ export class PrismaPetPhotosRepository implements PetPhotosRepository {
     photos: Prisma.PetPhotoUncheckedCreateWithoutPetInput[],
     petId: string,
   ) {
-    await prisma.pet.update({
-      data: { photos: { createMany: { data: photos } } },
-      where: { id: petId },
-    })
+    const newPhotos = photos.map((photo) => ({
+      url: photo.url,
+      pet_id: petId,
+    }))
+
+    await prisma.petPhoto.createMany({ data: newPhotos })
   }
 
   async fetchManyByPetId(petId: string) {

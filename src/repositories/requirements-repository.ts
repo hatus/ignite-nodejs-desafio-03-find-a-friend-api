@@ -4,6 +4,6 @@ export interface RequirementsRepository {
   createMany(
     requirements: Prisma.RequirementUncheckedCreateWithoutPetInput[],
     petId: string,
-  ): Promise<void>
+  ): Promise<Requirement[]>
   fetchManyByPetId(petId: string): Promise<Requirement[]>
 }
