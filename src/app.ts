@@ -5,6 +5,7 @@ import fastifyJwt from '@fastify/jwt'
 import { env } from './env'
 import { multer } from './libs/upload'
 import { organizationsRoutes } from './http/controllers/organizations/routes'
+import { petsRoutes } from './http/controllers/pets/routes'
 
 const app = fastify()
 
@@ -13,6 +14,7 @@ app.register(fastifyJwt, {
 })
 app.register(multer.contentParser)
 app.register(organizationsRoutes)
+app.register(petsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
