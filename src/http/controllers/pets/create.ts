@@ -1,6 +1,6 @@
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 import { makeCreatePetUseCase } from '@/use-cases/factories/create-pet-use-case'
-import { makeCreateManyPetPhotosByPetUseCase } from '@/use-cases/factories/make-create-many-pet-photos-by-pet.spec'
+import { makeCreateManyPetPhotosByPetUseCase } from '@/use-cases/factories/make-create-many-pet-photos-by-pet'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
