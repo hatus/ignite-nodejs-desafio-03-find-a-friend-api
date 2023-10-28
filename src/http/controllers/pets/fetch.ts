@@ -5,14 +5,13 @@ import { z } from 'zod'
 
 export async function fetch(request: FastifyRequest, reply: FastifyReply) {
   const fetchPetsByCityQuerySchema = z.object({
-    city: z.string(),
+    city: z.string({ required_error: 'City is required' }).min(1),
   })
 
-  const { city } = fetchPetsByCityQuerySchema.parse(request.query)
-
-  const fetchPetsByCityUseCase = makeFetchPetsByCityUseCase()
-
   try {
+    const { city } = fetchPetsByCityQuerySchema.parse(request.query)
+    const fetchPetsByCityUseCase = makeFetchPetsByCityUseCase()
+
     const { pets } = await fetchPetsByCityUseCase.execute({
       city,
     })
