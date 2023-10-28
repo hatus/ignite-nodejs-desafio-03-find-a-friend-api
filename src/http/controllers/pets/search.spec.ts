@@ -3,7 +3,7 @@ import request from 'supertest'
 import { app } from '@/app'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
 
-describe('List Pets By City E2E', () => {
+describe('List Pets By Characteristics E2E', () => {
   beforeAll(async () => {
     await app.ready()
   })
@@ -12,7 +12,7 @@ describe('List Pets By City E2E', () => {
     await app.close()
   })
 
-  it('should be able to fetch pets by city', async () => {
+  it('should be able to search pets by Characteristics', async () => {
     const { token } = await createAndAuthenticateUser(app)
 
     await request(app.server)
@@ -28,7 +28,9 @@ describe('List Pets By City E2E', () => {
         stamina: 'ALTO',
       })
 
-    const response = await request(app.server).get(`/pets/city?city=teresina`)
+    const response = await request(app.server).get(
+      `/pets?size=PEQUENO&stamina=ALTO`,
+    )
 
     const pets = response.body.pets
 

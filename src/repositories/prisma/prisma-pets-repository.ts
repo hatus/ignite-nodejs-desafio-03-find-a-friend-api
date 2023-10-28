@@ -1,6 +1,6 @@
-import { Prisma } from '@prisma/client'
+import { Pet, Prisma } from '@prisma/client'
 
-import { PetsRepository } from '../pets-repository'
+import { CharacteristicsType, PetsRepository } from '../pets-repository'
 import { prisma } from '@/libs/prisma'
 
 export class PrismaPetsRepository implements PetsRepository {
@@ -24,6 +24,22 @@ export class PrismaPetsRepository implements PetsRepository {
   async fetchManyByOrganizationIds(organizationIds: string[]) {
     const pets = await prisma.pet.findMany({
       where: { organization_id: { in: organizationIds } },
+    })
+
+    return pets
+  }
+
+  async fetchManyByCharacteristics({
+    age,
+    environment,
+    size,
+    stamina,
+    independency,
+  }: CharacteristicsType): Promise<Pet[]> {
+    const pets = await prisma.pet.findMany({
+      where: {
+        AND: [{ age, independency, size, stamina, environment }],
+      },
     })
 
     return pets
