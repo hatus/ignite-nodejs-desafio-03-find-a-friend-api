@@ -20,7 +20,7 @@ export class PrismaOrganizationsRepository implements OrganizationsRepository {
 
   async fetchManyByCity(city: string) {
     const organizations = await prisma.organization.findMany({
-      where: { city },
+      where: { city: { contains: city } },
       include: {
         pets: {
           include: {
