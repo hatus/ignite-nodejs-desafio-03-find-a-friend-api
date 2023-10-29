@@ -28,10 +28,22 @@ describe('List Pets By Characteristics E2E', () => {
         stamina: 'ALTO',
       })
 
-    const response = await request(app.server).get(
-      `/pets?size=PEQUENO&stamina=ALTO`,
-    )
+    await request(app.server)
+      .post(`/pets`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        about: 'cachorro bravo',
+        age: 'FILHOTE',
+        environment: 'BAIXO',
+        independency: 'MEDIO',
+        name: 'totó',
+        size: 'GRANDE',
+        stamina: 'BAIXO',
+      })
 
+    const response = await request(app.server).get(
+      `/pets?size=GRANDE&stamina=BAIXO&independency=MEDIO`,
+    )
     const pets = response.body.pets
 
     expect(response.statusCode).toEqual(201)

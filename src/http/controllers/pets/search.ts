@@ -15,6 +15,7 @@ export async function search(request: FastifyRequest, reply: FastifyReply) {
   try {
     const { age, environment, independency, size, stamina } =
       fetchPetsByCharacteristics.parse(request.query)
+
     const searchPetUseCase = makeSearchPetUseCase()
 
     const { pets } = await searchPetUseCase.execute({
