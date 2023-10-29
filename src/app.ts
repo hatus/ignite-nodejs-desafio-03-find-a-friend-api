@@ -14,7 +14,7 @@ app.register(fastifyJwt, {
 })
 app.register(multer.contentParser)
 app.register(organizationsRoutes)
-app.register(petsRoutes)
+app.register(petsRoutes, { prefix: 'pets' })
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
